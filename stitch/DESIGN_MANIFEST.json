@@ -1,0 +1,50 @@
+[
+  {
+    "screenId": "d287de8133b64d84a2a86f07ee336d19",
+    "title": "Game Over",
+    "htmlFile": "d287de8133b64d84a2a86f07ee336d19.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzc1MjcxNWQxNDhjMTRhM2I4YWU3MTVjN2NhMzM2OTk5EgsSBxCqtuymzhMYAZIBIwoKcHJvamVjdF9pZBIVQhM5NzU5MzA1NDYyNTgwODY0ODY5&filename=&opi=96797242",
+    "localHtml": "/home/setrox/projects/tetris-supervisor-runtime-memory-0513/stitch/d287de8133b64d84a2a86f07ee336d19.html"
+  },
+  {
+    "screenId": "fdcffbdb28c74b9e975babcf201143a0",
+    "title": "Game Board",
+    "htmlFile": "fdcffbdb28c74b9e975babcf201143a0.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAyNDE1ZjZjYjAxMjQyYzFhNDRhYmE3MmM5MDllNDBlEgsSBxCqtuymzhMYAZIBIwoKcHJvamVjdF9pZBIVQhM5NzU5MzA1NDYyNTgwODY0ODY5&filename=&opi=96797242",
+    "localHtml": "/home/setrox/projects/tetris-supervisor-runtime-memory-0513/stitch/fdcffbdb28c74b9e975babcf201143a0.html"
+  },
+  {
+    "screenId": "43da98fdbe074f62921f203d55b40820",
+    "title": "Main Menu",
+    "htmlFile": "43da98fdbe074f62921f203d55b40820.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzgzZDgyNWYzMTk0ODRiNGNiMTA1MjI5ZWY4MjdmNzU1EgsSBxCqtuymzhMYAZIBIwoKcHJvamVjdF9pZBIVQhM5NzU5MzA1NDYyNTgwODY0ODY5&filename=&opi=96797242",
+    "localHtml": "/home/setrox/projects/tetris-supervisor-runtime-memory-0513/stitch/43da98fdbe074f62921f203d55b40820.html"
+  },
+  {
+    "screenId": "35e7036e4ca0421191109cd7f4513f17",
+    "title": "Game Settings",
+    "htmlFile": "35e7036e4ca0421191109cd7f4513f17.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzhhMmMxOWI5MDk1MjQyMjRhMzYzNzBkZWUyMjdkMDk3EgsSBxCqtuymzhMYAZIBIwoKcHJvamVjdF9pZBIVQhM5NzU5MzA1NDYyNTgwODY0ODY5&filename=&opi=96797242",
+    "localHtml": "/home/setrox/projects/tetris-supervisor-runtime-memory-0513/stitch/35e7036e4ca0421191109cd7f4513f17.html"
+  },
+  {
+    "screenId": "88ae03ca16804181a3db41efb090234c",
+    "title": "Controls Help",
+    "htmlFile": "88ae03ca16804181a3db41efb090234c.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzJhN2MyMWRhMDgwMzQ4NzY4YTgxZGI3OTE3NDljODA2EgsSBxCqtuymzhMYAZIBIwoKcHJvamVjdF9pZBIVQhM5NzU5MzA1NDYyNTgwODY0ODY5&filename=&opi=96797242",
+    "localHtml": "/home/setrox/projects/tetris-supervisor-runtime-memory-0513/stitch/88ae03ca16804181a3db41efb090234c.html"
+  },
+  {
+    "screenId": "fa53f21341ab4098a98961eb78f0c27b",
+    "title": "Pause Overlay",
+    "htmlFile": "fa53f21341ab4098a98961eb78f0c27b.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2YxY2MyNjc0Njg3OTQ0MGI5NTYxNDhlNTkxYjBmOWVhEgsSBxCqtuymzhMYAZIBIwoKcHJvamVjdF9pZBIVQhM5NzU5MzA1NDYyNTgwODY0ODY5&filename=&opi=96797242",
+    "localHtml": "/home/setrox/projects/tetris-supervisor-runtime-memory-0513/stitch/fa53f21341ab4098a98961eb78f0c27b.html"
+  }
+]

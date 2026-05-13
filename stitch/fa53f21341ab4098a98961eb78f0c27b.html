@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Paused</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#ffb5ab",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-tertiary-fixed": "#410001",
+                        "surface-variant": "#2d3449",
+                        "on-secondary-fixed": "#001f26",
+                        "secondary-container": "#03b5d3",
+                        "on-surface": "#dae2fd",
+                        "background": "#0b1326",
+                        "secondary-fixed": "#acedff",
+                        "secondary": "#4cd7f6",
+                        "on-tertiary": "#60130d",
+                        "tertiary-container": "#ff8b7c",
+                        "surface-container-highest": "#2d3449",
+                        "outline": "#869585",
+                        "on-background": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "surface-bright": "#31394d",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface-variant": "#bccbb9",
+                        "surface-container-high": "#222a3d",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#002109",
+                        "primary-container": "#22c55e",
+                        "on-secondary-container": "#00424e",
+                        "surface-container": "#171f33",
+                        "on-primary-fixed-variant": "#005321",
+                        "tertiary-fixed": "#ffdad5",
+                        "surface": "#0b1326",
+                        "on-error": "#690005",
+                        "surface-tint": "#4ae176",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#060e20",
+                        "inverse-primary": "#006e2f",
+                        "on-secondary": "#003640",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-primary-container": "#004b1e",
+                        "outline-variant": "#3d4a3d",
+                        "inverse-surface": "#dae2fd",
+                        "primary-fixed": "#6bff8f",
+                        "on-primary": "#003915",
+                        "on-tertiary-container": "#76231b",
+                        "surface-container-low": "#131b2e",
+                        "primary": "#4be277",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed-dim": "#ffb4a9",
+                        "on-tertiary-fixed-variant": "#7f2a21"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "container_max_width": "1200px",
+                        "touch_target": "44px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "button-text": ["Geist"],
+                        "data-value": ["Geist"],
+                        "status-label": ["Geist"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "button-text": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "data-value": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "status-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neon-glow {
+            text-shadow: 0 0 8px rgba(74, 225, 118, 0.5);
+        }
+        
+        /* Custom range slider styling for Supervisor persona */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 8px;
+            background: theme('colors.primary');
+            cursor: pointer;
+            border-radius: 0;
+            box-shadow: 0 0 4px theme('colors.primary');
+        }
+        
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            cursor: pointer;
+            background: theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden relative">
+<!-- Blurred Background Simulation (The 'Game Board' underneath) -->
+<div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80')] bg-cover bg-center filter blur-md opacity-30" data-alt="A dark, abstract digital interface resembling a high-tech command center or complex system. Faint geometric lines, grid structures, and terminal-like data streams are visible in the background, obscured by depth of field. The palette is dominated by deep Slate colors (#0F172A) with extremely subtle hints of muted Emerald and secondary blues. The lighting is low and moody, conveying a sense of intense focus and complex background processing in a modern, calculated style.">
+</div>
+<!-- Semi-transparent Dark Overlay -->
+<div class="absolute inset-0 z-10 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center p-gutter">
+<!-- Pause Menu Container -->
+<div class="w-full max-w-md bg-surface-container-low border border-outline-variant rounded-DEFAULT p-8 flex flex-col gap-8 shadow-2xl relative">
+<!-- Decorative Accent Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<!-- Header -->
+<div class="flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-primary text-5xl mb-2" style="font-variation-settings: 'FILL' 1;">pause_circle</span>
+<h1 class="font-headline-lg text-headline-lg text-primary neon-glow uppercase tracking-widest">System Paused</h1>
+<p class="font-status-label text-status-label text-on-surface-variant uppercase">Interruption Protocol Active</p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 w-full mt-4">
+<!-- Resume Button (Primary Action) -->
+<button class="h-touch_target w-full bg-primary/10 border border-primary text-primary font-button-text text-button-text uppercase tracking-wider hover:bg-primary hover:text-background transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined">play_arrow</span>
+                    Resume Game
+                </button>
+<!-- Restart Button -->
+<button class="h-touch_target w-full bg-transparent border border-outline-variant text-on-surface hover:border-secondary hover:text-secondary font-button-text text-button-text uppercase tracking-wider transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined">refresh</span>
+                    Restart Level
+                </button>
+<!-- Quit Button -->
+<button class="h-touch_target w-full bg-transparent border border-outline-variant text-on-surface hover:border-error hover:text-error hover:bg-error/10 font-button-text text-button-text uppercase tracking-wider transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background mt-4">
+<span class="material-symbols-outlined">logout</span>
+                    Quit to Menu
+                </button>
+</div>
+<!-- Settings / Utilities Area -->
+<div class="mt-4 pt-6 border-t border-outline-variant flex flex-col gap-6">
+<!-- Volume Control -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-status-label text-status-label text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">volume_up</span>
+                            Master Audio Output
+                        </label>
+<span class="font-data-value text-data-value text-primary text-sm">75%</span>
+</div>
+<div class="w-full flex items-center h-touch_target">
+<input class="w-full appearance-none bg-transparent" max="100" min="0" type="range" value="75"/>
+</div>
+</div>
+<!-- Controls Help Link -->
+<button class="text-secondary font-button-text text-button-text flex items-center justify-center gap-2 hover:text-primary transition-colors py-2 uppercase tracking-wide group">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform">keyboard</span>
+                    View Terminal Controls
+                </button>
+</div>
+</div>
+</div>
+</body></html>

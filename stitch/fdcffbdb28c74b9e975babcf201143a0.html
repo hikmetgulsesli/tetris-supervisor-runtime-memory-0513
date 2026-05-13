@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Play Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#ffb5ab",
+                      "primary-fixed-dim": "#4ae176",
+                      "on-tertiary-fixed": "#410001",
+                      "surface-variant": "#2d3449",
+                      "on-secondary-fixed": "#001f26",
+                      "secondary-container": "#03b5d3",
+                      "on-surface": "#dae2fd",
+                      "background": "#0b1326",
+                      "secondary-fixed": "#acedff",
+                      "secondary": "#4cd7f6",
+                      "on-tertiary": "#60130d",
+                      "tertiary-container": "#ff8b7c",
+                      "surface-container-highest": "#2d3449",
+                      "outline": "#869585",
+                      "on-background": "#dae2fd",
+                      "inverse-on-surface": "#283044",
+                      "surface-bright": "#31394d",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "on-surface-variant": "#bccbb9",
+                      "surface-container-high": "#222a3d",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#002109",
+                      "primary-container": "#22c55e",
+                      "on-secondary-container": "#00424e",
+                      "surface-container": "#171f33",
+                      "on-primary-fixed-variant": "#005321",
+                      "tertiary-fixed": "#ffdad5",
+                      "surface": "#0b1326",
+                      "on-error": "#690005",
+                      "surface-tint": "#4ae176",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#060e20",
+                      "inverse-primary": "#006e2f",
+                      "on-secondary": "#003640",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-primary-container": "#004b1e",
+                      "outline-variant": "#3d4a3d",
+                      "inverse-surface": "#dae2fd",
+                      "primary-fixed": "#6bff8f",
+                      "on-primary": "#003915",
+                      "on-tertiary-container": "#76231b",
+                      "surface-container-low": "#131b2e",
+                      "primary": "#4be277",
+                      "surface-dim": "#0b1326",
+                      "tertiary-fixed-dim": "#ffb4a9",
+                      "on-tertiary-fixed-variant": "#7f2a21"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "container_max_width": "1200px",
+                      "touch_target": "44px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Geist"
+                      ],
+                      "button-text": [
+                              "Geist"
+                      ],
+                      "data-value": [
+                              "Geist"
+                      ],
+                      "status-label": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "button-text": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-value": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "status-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #0F172A; /* Deep Slate Base Layer */
+            color: #dae2fd;
+        }
+        
+        .game-well-grid {
+            background-image: 
+                linear-gradient(to right, rgba(51, 65, 85, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(51, 65, 85, 0.2) 1px, transparent 1px);
+            background-size: calc(100% / 10) calc(100% / 20);
+        }
+
+        .tetromino-glow {
+            box-shadow: 0 0 12px currentColor, inset 0 0 8px currentColor;
+        }
+        
+        .block-locked {
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.5);
+            opacity: 0.8;
+        }
+
+        .focus-ring-active {
+            border: 2px solid #22C55E;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+        }
+        
+        /* Tetromino Colors - Emissive Depth */
+        .color-i { color: #00f0f0; background-color: rgba(0, 240, 240, 0.8); border: 1px solid #00f0f0; }
+        .color-j { color: #0000f0; background-color: rgba(0, 0, 240, 0.8); border: 1px solid #0000f0; }
+        .color-l { color: #f0a000; background-color: rgba(240, 160, 0, 0.8); border: 1px solid #f0a000; }
+        .color-o { color: #f0f000; background-color: rgba(240, 240, 0, 0.8); border: 1px solid #f0f000; }
+        .color-s { color: #00f000; background-color: rgba(0, 240, 0, 0.8); border: 1px solid #00f000; }
+        .color-t { color: #a000f0; background-color: rgba(160, 0, 240, 0.8); border: 1px solid #a000f0; }
+        .color-z { color: #f00000; background-color: rgba(240, 0, 0, 0.8); border: 1px solid #f00000; }
+        
+        .ghost-piece {
+            background-color: transparent !important;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-gutter h-touch_target bg-background border-b border-outline-variant dark:border-outline-variant shrink-0 z-50">
+<div class="font-headline-lg text-headline-lg font-extrabold text-primary dark:text-primary drop-shadow-[0_0_8px_rgba(74,225,118,0.5)] tracking-tighter">
+            TETRIS SUPERVISOR
+        </div>
+<div class="flex items-center gap-4 hidden">
+<!-- Search bar hidden per JSON -->
+</div>
+<div class="flex items-center gap-2">
+<button class="w-touch_target h-touch_target flex items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant hover:text-primary transition-colors rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+<span class="material-symbols-outlined" data-weight="regular">leaderboard</span>
+</button>
+<button class="w-touch_target h-touch_target flex items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant hover:text-primary transition-colors rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+<span class="material-symbols-outlined" data-weight="regular">help</span>
+</button>
+<button class="w-touch_target h-touch_target flex items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant hover:text-primary transition-colors rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+<span class="material-symbols-outlined" data-weight="regular">settings</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Side Navigation (Left Sidebar) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container-low border-r border-outline-variant dark:border-outline-variant w-64 pt-touch_target mt-[1px]">
+<div class="p-6 border-b border-outline-variant">
+<div class="font-headline-lg text-headline-lg text-primary truncate">SUPERVISOR</div>
+<div class="font-status-label text-status-label text-on-surface-variant mt-1">ID: ARCADE-04</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1">
+<a class="bg-surface-variant text-primary border-l-4 border-primary px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-status-label text-status-label uppercase tracking-widest">Command</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 border-l-4 border-transparent hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-status-label text-status-label uppercase tracking-widest">Forecast</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 border-l-4 border-transparent hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-status-label text-status-label uppercase tracking-widest">Analytics</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 border-l-4 border-transparent hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-status-label text-status-label uppercase tracking-widest">Logs</span>
+</a>
+</div>
+<div class="p-6 mt-auto border-t border-outline-variant">
+<button class="w-full h-touch_target flex items-center justify-center border border-error text-error font-button-text text-button-text uppercase rounded-DEFAULT hover:bg-error hover:text-on-error transition-colors focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-background">
+                    TERMINATE SESSION
+                </button>
+</div>
+</nav>
+<!-- Main Game Area -->
+<main class="flex-1 flex items-center justify-center p-gutter md:ml-64 relative bg-[#0F172A] pb-20 md:pb-10">
+<!-- Game HUD Container -->
+<div class="flex flex-col md:flex-row items-stretch justify-center gap-8 w-full max-w-[800px] h-[819px] min-h-[600px]">
+<!-- Left Column: Status & Hold -->
+<div class="flex flex-col gap-6 w-32 shrink-0 justify-start pt-10">
+<!-- Hold Piece -->
+<div class="bg-surface border border-[#334155] rounded-DEFAULT p-3 flex flex-col items-center">
+<div class="font-status-label text-status-label text-on-surface-variant uppercase mb-4 tracking-widest border-t-2 border-surface-variant pt-2 w-full text-center">HOLD</div>
+<div class="w-20 h-20 bg-background border border-outline-variant rounded-DEFAULT flex items-center justify-center relative overflow-hidden">
+<!-- Ghosted I piece -->
+<div class="absolute w-16 h-4 flex">
+<div class="w-4 h-4 color-i tetromino-glow border-r border-[#00f0f0]/50"></div>
+<div class="w-4 h-4 color-i tetromino-glow border-r border-[#00f0f0]/50"></div>
+<div class="w-4 h-4 color-i tetromino-glow border-r border-[#00f0f0]/50"></div>
+<div class="w-4 h-4 color-i tetromino-glow"></div>
+</div>
+</div>
+</div>
+<!-- Status Monitors -->
+<div class="bg-surface border border-[#334155] rounded-DEFAULT p-3 flex flex-col items-center">
+<div class="font-status-label text-status-label text-on-surface-variant uppercase mb-2 tracking-widest border-t-2 border-primary pt-2 w-full text-center">SCORE</div>
+<div class="font-data-value text-data-value text-on-surface tabular-nums">042,150</div>
+</div>
+<div class="bg-surface border border-[#334155] rounded-DEFAULT p-3 flex flex-col items-center">
+<div class="font-status-label text-status-label text-on-surface-variant uppercase mb-2 tracking-widest border-t-2 border-secondary pt-2 w-full text-center">LEVEL</div>
+<div class="font-data-value text-data-value text-on-surface tabular-nums">12</div>
+</div>
+<div class="bg-surface border border-[#334155] rounded-DEFAULT p-3 flex flex-col items-center">
+<div class="font-status-label text-status-label text-on-surface-variant uppercase mb-2 tracking-widest border-t-2 border-tertiary pt-2 w-full text-center">LINES</div>
+<div class="font-data-value text-data-value text-on-surface tabular-nums">114</div>
+</div>
+</div>
+<!-- Central Game Well -->
+<div class="relative bg-surface border-2 border-[#334155] rounded-DEFAULT p-2 shrink-0 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 rounded-full bg-surface-variant/80 border border-outline-variant flex items-center justify-center text-on-surface hover:text-primary hover:border-primary transition-colors backdrop-blur-sm focus:outline-none focus-ring-active">
+<span class="material-symbols-outlined text-xl">pause</span>
+</button>
+</div>
+<!-- The Grid (10x20) aspect ratio -->
+<div class="game-well-grid w-[300px] h-[600px] border border-outline-variant relative bg-[#0b1326] overflow-hidden">
+<!-- Locked Blocks (Background Layer) -->
+<div class="absolute bottom-0 left-0 w-full flex">
+<div class="w-[30px] h-[30px] color-j block-locked"></div>
+<div class="w-[30px] h-[30px] color-j block-locked"></div>
+<div class="w-[30px] h-[30px] color-j block-locked"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-o block-locked"></div>
+<div class="w-[30px] h-[30px] color-o block-locked"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-s block-locked"></div>
+<div class="w-[30px] h-[30px] color-s block-locked"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+</div>
+<div class="absolute bottom-[30px] left-0 w-full flex">
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-j block-locked"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-o block-locked"></div>
+<div class="w-[30px] h-[30px] color-o block-locked"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-s block-locked"></div>
+<div class="w-[30px] h-[30px] color-s block-locked"></div>
+</div>
+<!-- Active Falling Piece (Emissive Layer) - T-Piece -->
+<div class="absolute top-[180px] left-[120px] w-[90px] h-[60px]">
+<div class="flex w-full">
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-t tetromino-glow border-b border-[#a000f0]/50"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+</div>
+<div class="flex w-full">
+<div class="w-[30px] h-[30px] color-t tetromino-glow border-r border-[#a000f0]/50"></div>
+<div class="w-[30px] h-[30px] color-t tetromino-glow border-r border-[#a000f0]/50"></div>
+<div class="w-[30px] h-[30px] color-t tetromino-glow"></div>
+</div>
+</div>
+<!-- Ghost Drop Indicator -->
+<div class="absolute bottom-[60px] left-[120px] w-[90px] h-[60px]">
+<div class="flex w-full">
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+<div class="w-[30px] h-[30px] color-t ghost-piece border-b border-[#a000f0]/50"></div>
+<div class="w-[30px] h-[30px] bg-transparent"></div>
+</div>
+<div class="flex w-full">
+<div class="w-[30px] h-[30px] color-t ghost-piece border-r border-[#a000f0]/50"></div>
+<div class="w-[30px] h-[30px] color-t ghost-piece border-r border-[#a000f0]/50"></div>
+<div class="w-[30px] h-[30px] color-t ghost-piece"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Forecast / Next -->
+<div class="flex flex-col gap-6 w-32 shrink-0 justify-start pt-10">
+<div class="bg-surface border border-[#334155] rounded-DEFAULT p-3 flex flex-col items-center">
+<div class="font-status-label text-status-label text-on-surface-variant uppercase mb-4 tracking-widest border-t-2 border-surface-variant pt-2 w-full text-center">NEXT</div>
+<div class="flex flex-col gap-3 w-full">
+<!-- Next 1 (L Piece) -->
+<div class="w-full h-20 bg-background border border-outline-variant rounded-DEFAULT flex items-center justify-center relative">
+<div class="absolute w-[60px] h-[45px] flex flex-col">
+<div class="flex w-full justify-end">
+<div class="w-[15px] h-[15px] color-l ghost-piece border-b border-[#f0a000]/50"></div>
+</div>
+<div class="flex w-full">
+<div class="w-[15px] h-[15px] color-l ghost-piece border-r border-[#f0a000]/50"></div>
+<div class="w-[15px] h-[15px] color-l ghost-piece border-r border-[#f0a000]/50"></div>
+<div class="w-[15px] h-[15px] color-l ghost-piece"></div>
+</div>
+</div>
+</div>
+<!-- Next 2 (Z Piece) -->
+<div class="w-full h-16 bg-background border border-outline-variant rounded-DEFAULT flex items-center justify-center relative opacity-70">
+<div class="absolute w-[45px] h-[30px] flex flex-col">
+<div class="flex w-full">
+<div class="w-[15px] h-[15px] color-z ghost-piece border-r border-[#f00000]/50"></div>
+<div class="w-[15px] h-[15px] color-z ghost-piece"></div>
+<div class="w-[15px] h-[15px] bg-transparent"></div>
+</div>
+<div class="flex w-full">
+<div class="w-[15px] h-[15px] bg-transparent"></div>
+<div class="w-[15px] h-[15px] color-z ghost-piece border-r border-[#f00000]/50"></div>
+<div class="w-[15px] h-[15px] color-z ghost-piece"></div>
+</div>
+</div>
+</div>
+<!-- Next 3 (I Piece) -->
+<div class="w-full h-16 bg-background border border-outline-variant rounded-DEFAULT flex items-center justify-center relative opacity-40">
+<div class="absolute w-[60px] h-[15px] flex">
+<div class="w-[15px] h-[15px] color-i ghost-piece border-r border-[#00f0f0]/50"></div>
+<div class="w-[15px] h-[15px] color-i ghost-piece border-r border-[#00f0f0]/50"></div>
+<div class="w-[15px] h-[15px] color-i ghost-piece border-r border-[#00f0f0]/50"></div>
+<div class="w-[15px] h-[15px] color-i ghost-piece"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Keyboard Hints -->
+<div class="mt-auto p-3 bg-surface-container border border-outline-variant rounded-DEFAULT">
+<div class="font-status-label text-status-label text-on-surface-variant uppercase mb-3 text-center">CONTROLS</div>
+<div class="flex flex-col gap-2 font-button-text text-button-text text-on-surface text-[10px]">
+<div class="flex justify-between items-center">
+<span>MOVE</span>
+<div class="flex gap-1">
+<span class="px-1 border border-outline rounded bg-surface-variant">←</span>
+<span class="px-1 border border-outline rounded bg-surface-variant">→</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span>ROTATE</span>
+<span class="px-1 border border-outline rounded bg-surface-variant">↑</span>
+</div>
+<div class="flex justify-between items-center">
+<span>DROP</span>
+<span class="px-1 border border-outline rounded bg-surface-variant whitespace-nowrap">SPACE</span>
+</div>
+<div class="flex justify-between items-center">
+<span>HOLD</span>
+<span class="px-2 border border-outline rounded bg-surface-variant">C</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="flex justify-between items-center w-full px-gutter py-2 fixed bottom-0 z-30 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant">
+<div class="font-status-label text-status-label opacity-60 text-secondary dark:text-secondary">
+            CORE SYSTEM v4.2.0 // COMMAND CENTER
+        </div>
+<div class="flex items-center gap-4">
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Manual</a>
+<a class="font-button-text text-button-text text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Protocol</a>
+<a class="font-button-text text-button-text text-primary font-bold hover:text-primary transition-colors cursor-pointer" href="#">Status</a>
+</div>
+</footer>
+</body></html>
