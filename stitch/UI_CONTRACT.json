@@ -1,0 +1,532 @@
+[
+  {
+    "screenId": "d287de8133b64d84a2a86f07ee336d19",
+    "screenTitle": "Game Over",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "PLAY AGAIN",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "MAIN MENU",
+        "line": 184
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "PLAY AGAIN",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "MAIN MENU",
+        "line": 184
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "fdcffbdb28c74b9e975babcf201143a0",
+    "screenTitle": "Game Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Command",
+        "href": "#",
+        "line": 209
+      },
+      {
+        "type": "link",
+        "label": "Forecast",
+        "href": "#",
+        "line": 213
+      },
+      {
+        "type": "link",
+        "label": "Analytics",
+        "href": "#",
+        "line": 217
+      },
+      {
+        "type": "link",
+        "label": "Logs",
+        "href": "#",
+        "line": 221
+      },
+      {
+        "type": "link",
+        "label": "Manual",
+        "href": "#",
+        "line": 406
+      },
+      {
+        "type": "link",
+        "label": "Protocol",
+        "href": "#",
+        "line": 407
+      },
+      {
+        "type": "link",
+        "label": "Status",
+        "href": "#",
+        "line": 408
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 190
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 193
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "TERMINATE SESSION",
+        "line": 227
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 268
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Command",
+        "href": "#",
+        "line": 209
+      },
+      {
+        "type": "link",
+        "label": "Forecast",
+        "href": "#",
+        "line": 213
+      },
+      {
+        "type": "link",
+        "label": "Analytics",
+        "href": "#",
+        "line": 217
+      },
+      {
+        "type": "link",
+        "label": "Logs",
+        "href": "#",
+        "line": 221
+      },
+      {
+        "type": "link",
+        "label": "Manual",
+        "href": "#",
+        "line": 406
+      },
+      {
+        "type": "link",
+        "label": "Protocol",
+        "href": "#",
+        "line": 407
+      },
+      {
+        "type": "link",
+        "label": "Status",
+        "href": "#",
+        "line": 408
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 190
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 193
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "TERMINATE SESSION",
+        "line": 227
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 268
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 12,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "43da98fdbe074f62921f203d55b40820",
+    "screenTitle": "Main Menu",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "START NEW GAME",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "RESUME",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "HOW TO PLAY",
+        "line": 191
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "START NEW GAME",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "RESUME",
+        "line": 179
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "HOW TO PLAY",
+        "line": 191
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "35e7036e4ca0421191109cd7f4513f17",
+    "screenTitle": "Game Settings",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Command",
+        "href": "#",
+        "line": 117
+      },
+      {
+        "type": "link",
+        "label": "Forecast",
+        "href": "#",
+        "line": 121
+      },
+      {
+        "type": "link",
+        "label": "Analytics",
+        "href": "#",
+        "line": 125
+      },
+      {
+        "type": "link",
+        "label": "Logs",
+        "href": "#",
+        "line": 129
+      },
+      {
+        "type": "link",
+        "label": "Options",
+        "href": "#",
+        "line": 134
+      },
+      {
+        "type": "button",
+        "label": "TERMINATE SESSION",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "Reset High Scores",
+        "line": 256
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 164
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 174
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 189
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 198
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 216
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Command",
+        "href": "#",
+        "line": 117
+      },
+      {
+        "type": "link",
+        "label": "Forecast",
+        "href": "#",
+        "line": 121
+      },
+      {
+        "type": "link",
+        "label": "Analytics",
+        "href": "#",
+        "line": 125
+      },
+      {
+        "type": "link",
+        "label": "Logs",
+        "href": "#",
+        "line": 129
+      },
+      {
+        "type": "link",
+        "label": "Options",
+        "href": "#",
+        "line": 134
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "TERMINATE SESSION",
+        "line": 140
+      },
+      {
+        "type": "button",
+        "label": "Reset High Scores",
+        "line": 256
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 164
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 174
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 189
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 198
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 216
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 12,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "88ae03ca16804181a3db41efb090234c",
+    "screenTitle": "Controls Help",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 121
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 127
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 130
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 133
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 121
+      },
+      {
+        "type": "button",
+        "label": "leaderboard",
+        "line": 127
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 130
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 133
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "fa53f21341ab4098a98961eb78f0c27b",
+    "screenTitle": "Pause Overlay",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Resume Game",
+        "line": 143
+      },
+      {
+        "type": "button",
+        "label": "Restart Level",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "Quit to Menu",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "View Terminal Controls",
+        "line": 174
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 170
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Resume Game",
+        "line": 143
+      },
+      {
+        "type": "button",
+        "label": "Restart Level",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "Quit to Menu",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "View Terminal Controls",
+        "line": 174
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 170
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 5,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
